@@ -9,19 +9,21 @@
 </head>
 <body>
   <div class="container">
-    <h1>Public University Finder</h1>
+    <h1>🎓 Public University Finder</h1>
+    <p class="subtitle">Search and discover universities worldwide</p>
     <div class="search">
-      <input type="text" id="query" placeholder="Search by name or country (e.g., USA)" />
+      <input type="text" id="query" placeholder="Search by name or country (e.g., MIT, United States)" />
       <select id="filter">
         <option value="all">All Universities</option>
-        <option value="public">Public Only</option>
-        <option value="private">Private Only</option>
+        <option value="public">Public Universities</option>
+        <option value="private">Private Universities</option>
       </select>
-      <button id="search">Search</button>
-      <button id="sort-date">Sort by Name</button>
+      <button id="search">🔍 Search</button>
+      <button id="sort-btn">Sort A→Z</button>
     </div>
-    <div id="results"></div>
+    <div id="status" class="status"></div>
     <div id="error" class="error"></div>
+    <div id="results"></div>
   </div>
   <script src="script.js"></script>
 </body>

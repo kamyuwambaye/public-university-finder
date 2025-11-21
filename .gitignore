@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Node / tooling (not used now, but safe to ignore)
+node_modules/
+
+# Environment / secrets (none are committed in this project)
+.env
+.env.*
