@@ -1,4 +1,4 @@
-const API = "http://universities.hipolabs.com/search";
+const API = "https://universities.hipolabs.com/search";
 
 let currentData = [];
 let sortAscending = true;
