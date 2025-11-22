@@ -18,12 +18,17 @@ It uses an external public API to fetch real university data and lets users sear
 
 ## External API Used
 
-This application uses the **Hipolabs Universities API**:
+This application uses the **Hipolabs Universities API** and a simple CORS proxy:
 
-- Base URL: `http://universities.hipolabs.com/search`
-- Documentation: https://universities.hipolabs.com/
+- Universities API base URL: `http://universities.hipolabs.com/search`
+- Universities API documentation: https://universities.hipolabs.com/
+- CORS proxy (for HTTPS GitHub Pages): `https://api.allorigins.win/raw?url=<encoded-target-url>`
 
-The API does **not** require authentication or API keys.
+The Universities API does **not** require authentication or API keys.
+
+On local HTTP deployments or your course web servers (Web01/Web02), the app can call the Universities API
+directly. On GitHub Pages (which is HTTPS), the app goes through the AllOrigins proxy because browsers block
+HTTPS pages from calling HTTP APIs directly (mixed content).
 
 ### Public vs Private heuristic
 
@@ -87,15 +92,18 @@ High‑level steps:
 
 ## GitHub Pages Deployment
 
-This repository can also be deployed as a static site using GitHub Pages:
+This repository is also deployed as a static site using GitHub Pages:
 
 1. Push the latest code to the `main` branch on GitHub.
 2. On GitHub, open the repository, go to **Settings → Pages**.
 3. Under **Build and deployment**, choose:
    - Source: `Deploy from a branch`
    - Branch: `main` and folder `/ (root)`
-4. Save. After a short delay, GitHub Pages will provide a URL like:
-   `https://<your-username>.github.io/public-university-finder/`
+4. Save. After a short delay, GitHub Pages will build and host the site at:
+   `https://kamyuwambaye.github.io/public-university-finder/`
+
+You can use this URL in your demo video to show the application running online independently of the
+course web servers.
 
 ## Handling API Keys and Sensitive Data
 
