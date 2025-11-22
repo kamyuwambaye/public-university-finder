@@ -3,14 +3,18 @@ const PROXY = "https://api.allorigins.win/raw?url=";
 
 let currentData = [];
 let sortAscending = true;
+let lastQuery = "";
 
 async function searchUniversities() {
-  const query = document.getElementById("query").value.trim();
+  const queryInput = document.getElementById("query");
+  const query = queryInput.value.trim();
   const filter = document.getElementById("filter").value;
   const errorDiv = document.getElementById("error");
   const resultsDiv = document.getElementById("results");
   const statusDiv = document.getElementById("status");
   
+  lastQuery = query;
+  queryInput.classList.remove("input-error");
   errorDiv.textContent = "";
   resultsDiv.innerHTML = "";
   statusDiv.textContent = "";
@@ -56,6 +60,7 @@ async function searchUniversities() {
   } catch (err) {
     statusDiv.textContent = "";
     statusDiv.className = "";
+    document.getElementById("query").classList.add("input-error");
     
     if (err.name === "TypeError" && err.message.includes("fetch")) {
       errorDiv.textContent = "Network error: Unable to reach the API. Please check your internet connection.";
@@ -69,10 +74,17 @@ function sortAndDisplay() {
   const resultsDiv = document.getElementById("results");
   const statusDiv = document.getElementById("status");
   const errorDiv = document.getElementById("error");
+  const queryInput = document.getElementById("query");
   
   if (currentData.length === 0) {
     statusDiv.textContent = "";
-    errorDiv.textContent = "No universities found. Try a different search term or filter.";
+    queryInput.classList.add("input-error");
+
+    if (lastQuery) {
+      errorDiv.textContent = `No universities found for "${lastQuery}". If you searched by country, try using the full country name (e.g., "United States", "Rwanda").`;
+    } else {
+      errorDiv.textContent = "No universities found. Try entering a university name or full country name.";
+    }
     return;
   }
 
