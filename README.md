@@ -1,11 +1,11 @@
-# Public University Finder
+#  University Finder
 
-Public University Finder is a small web application that helps students and parents quickly discover universities around the world and jump directly to their official websites.
+University Finder is a small web application that helps students and parents quickly discover universities around the world and jump directly to their official websites.
 It uses an external public API to fetch real university data and lets users search, filter, and sort results in an intuitive interface.
 
 ## Features
 
-- Search universities by name or country (e.g. `MIT`, `United States`, `Germany`).
+- Search universities by name or country (e.g. `University or Ghana`, `Ghana`, `Germany`).
 - Filter by:
   - All universities
   - Public universities (based on country heuristic – see below)
@@ -15,6 +15,7 @@ It uses an external public API to fetch real university data and lets users sear
 - Status and error handling:
   - Loading indicator while the API request is in progress.
   - Clear messages for no results, network/API errors, or invalid responses.
+- Simple, accessible frontend with a consistent Montserrat font and a soft beige theme to keep the UI clean and readable.
 
 ## External API Used
 
