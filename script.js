@@ -1,4 +1,5 @@
-const API = "https://universities.hipolabs.com/search";
+const API = "http://universities.hipolabs.com/search";
+const PROXY = "https://api.allorigins.win/raw?url=";
 
 let currentData = [];
 let sortAscending = true;
@@ -19,10 +20,11 @@ async function searchUniversities() {
   statusDiv.className = "status loading";
 
   try {
-    // Build API URL - support searching by country code or name
-    let url = `${API}?name=${encodeURIComponent(query)}`;
+    // Build proxied API URL (GitHub Pages is HTTPS but the Universities API is HTTP-only)
+    const targetUrl = `${API}?name=${encodeURIComponent(query)}`;
+    const proxiedUrl = PROXY + encodeURIComponent(targetUrl);
     
-    const res = await fetch(url, { timeout: 10000 });
+    const res = await fetch(proxiedUrl);
     
     if (!res.ok) {
       throw new Error(`API returned status ${res.status}. Please try again later.`);
